@@ -7,8 +7,8 @@ beforeAll(async () => {
   server = await createServer()
 })
 
-afterAll(() => {
-  server.close()
+afterAll(async () => {
+  await server.close()
 })
 
 describe('gateway test', () => {

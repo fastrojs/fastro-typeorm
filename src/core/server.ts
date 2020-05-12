@@ -1,5 +1,6 @@
 import fastify, { FastifyInstance } from 'fastify'
 import { createConnection } from './database'
+import { corePlugin } from './coreplugin'
 import {
   createServer as createFastroServer,
   configuration as config,
@@ -14,7 +15,9 @@ import {
 export const createServer = async (options?: fastify.ServerOptions): Promise<FastifyInstance> => {
   try {
     await createConnection()
-    return createFastroServer(options)
+    const server = await createFastroServer(options)
+    server.register(corePlugin)
+    return server
   } catch (error) {
     throw createError('CREATE_SERVER_ERROR', error)
   }
