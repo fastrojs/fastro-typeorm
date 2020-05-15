@@ -21,7 +21,7 @@ test('GET /web/user', async () => {
     url: '/web/user',
     method: 'GET'
   })
-  expect(result.payload).toBe('{"error":true,"message":"User not found"}')
+  expect(result.payload).toBe('{"message":"User not found","error":true}')
 })
 
 test('POST /web/user', async () => {
