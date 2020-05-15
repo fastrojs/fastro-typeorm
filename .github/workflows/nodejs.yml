@@ -33,23 +33,9 @@ jobs:
     - name: Verify MySQL connection from host
       run: mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -proot -e "SHOW GRANTS FOR 'root'@'localhost'; CREATE DATABASE IF NOT EXISTS test;"
     - run: npm ci
-    - run: npm test
     - run: npm run build --if-present
     - run: MYSQL_PORT=${{ job.services.mysql.ports['3306'] }} npm test
+    - run: npm publish --access public
       env:
         CI: true
-  
-  publish-npm:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

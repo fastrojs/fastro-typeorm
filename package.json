@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "@fastro/core": "^0.1.2",
+    "@fastro/core": "^0.1.3",
     "mysql2": "^2.1.0",
     "typeorm": "^0.2.24"
   },

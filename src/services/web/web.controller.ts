@@ -6,6 +6,6 @@ import { ServerResponse } from 'http'
 export class WebController {
   @Get()
   sayHello (request: FastifyRequest, reply: FastifyReply<ServerResponse>): any {
-    reply.sendOk('hello')
+    reply.ok('hello')
   }
 }

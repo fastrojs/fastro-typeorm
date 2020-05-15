@@ -20,7 +20,7 @@ export class UserController {
   @Get({ schema: getAllUserSchema })
   async getAll (request: FastifyRequest, reply: FastifyReply<ServerResponse>): Promise<User[]> {
     const users = await this.userService.getAllUser()
-    if (users.length === 0) reply.sendError(new Error('User not found'))
+    if (users.length === 0) reply.error(new Error('User not found'))
     return users
   }
 
@@ -28,6 +28,6 @@ export class UserController {
   async register (request: FastifyRequest, reply: FastifyReply<ServerResponse>): Promise<void> {
     const payload = request.body
     const user = await this.userService.register(payload)
-    reply.sendOk(user)
+    reply.ok(user)
   }
 }
