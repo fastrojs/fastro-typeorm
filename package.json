@@ -1,6 +1,6 @@
 {
   "name": "@fastro/typeorm",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Dependency injection ready. Powered by fastify.",
   "main": "index.js",
   "directories": {
@@ -51,6 +51,7 @@
     "dependency injection",
     "jest"
   ],
+  "types": "types/index.d.ts",
   "author": "ynwd",
   "license": "MIT"
 }

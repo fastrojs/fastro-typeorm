@@ -37,11 +37,6 @@ declare module 'fastify' {
   interface FastifyInstance<HttpServer = http.Server, HttpRequest = http.IncomingMessage, HttpResponse = http.ServerResponse> {
     addHook (name: 'onRegister', hook: (instance: FastifyInstance, opts: any) => void): FastifyInstance<HttpServer, HttpRequest, HttpResponse>;
   }
-
-  interface FastifyReply<HttpResponse>{
-    sendOk<T>(this: FastifyReply<HttpResponse>, payload?: T, message?: string, statusCode?: number): void;
-    sendError(this: FastifyReply<HttpResponse>, error: FastifyError): void;
-  }
 }
 
 export declare abstract class BasicEntity {
